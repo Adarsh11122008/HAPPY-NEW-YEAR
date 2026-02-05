@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JEE Prep Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient-orbs" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <main class="app">
+      <header class="hero">
+        <div>
+          <p class="hero__eyebrow">JEE Preparation Dashboard</p>
+          <h1>Track your mastery, build momentum.</h1>
+          <p class="hero__sub">
+            Plan, execute, and celebrate every micro-win on your journey to crack JEE.
+          </p>
+        </div>
+        <div class="hero__stats">
+          <div class="stat-card">
+            <span class="stat-card__label">Focus streak</span>
+            <span class="stat-card__value" id="streak">12 days</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">Mock tests</span>
+            <span class="stat-card__value" id="mockCount">4 taken</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">Weekly target</span>
+            <span class="stat-card__value" id="weeklyTarget">18 hrs</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid">
+        <article class="panel panel--progress">
+          <div class="panel__header">
+            <h2>Overall Progress</h2>
+            <button class="pill" id="boostBtn">Boost today</button>
+          </div>
+          <div class="progress-ring">
+            <svg viewBox="0 0 120 120" class="progress-ring__svg">
+              <circle class="track" cx="60" cy="60" r="52"></circle>
+              <circle class="progress" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="progress-ring__label">
+              <span id="overallPercent">78%</span>
+              <small>syllabus done</small>
+            </div>
+          </div>
+          <div class="milestones">
+            <div>
+              <h3>Next milestone</h3>
+              <p>Finish Electrostatics + 2 mocks</p>
+            </div>
+            <div>
+              <h3>Focus score</h3>
+              <p class="score" id="focusScore">8.4 / 10</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel panel--subjects">
+          <h2>Subject Mastery</h2>
+          <div class="subject" data-progress="82">
+            <div>
+              <h3>Physics</h3>
+              <p>Electrostatics & Modern Physics</p>
+            </div>
+            <div class="subject__meter"><span></span></div>
+          </div>
+          <div class="subject" data-progress="74">
+            <div>
+              <h3>Chemistry</h3>
+              <p>Physical + Organic revisions</p>
+            </div>
+            <div class="subject__meter"><span></span></div>
+          </div>
+          <div class="subject" data-progress="68">
+            <div>
+              <h3>Mathematics</h3>
+              <p>Calculus + Algebra drills</p>
+            </div>
+            <div class="subject__meter"><span></span></div>
+          </div>
+        </article>
+
+        <article class="panel panel--schedule">
+          <h2>Today’s Sprint</h2>
+          <ul class="timeline">
+            <li>
+              <span class="time">6:00 AM</span>
+              <div>
+                <h4>Revision burst</h4>
+                <p>Electrostatics formula sprint</p>
+              </div>
+            </li>
+            <li>
+              <span class="time">10:30 AM</span>
+              <div>
+                <h4>Problem solving</h4>
+                <p>30 questions - Integration</p>
+              </div>
+            </li>
+            <li>
+              <span class="time">4:00 PM</span>
+              <div>
+                <h4>Mock analysis</h4>
+                <p>Review last mock mistakes</p>
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <article class="panel panel--session">
+          <h2>Log a Study Session</h2>
+          <form id="sessionForm">
+            <label>
+              Topic
+              <input type="text" name="topic" placeholder="e.g. Rotational Mechanics" required />
+            </label>
+            <label>
+              Duration (mins)
+              <input type="number" name="minutes" min="15" max="240" value="90" required />
+            </label>
+            <label>
+              Energy level
+              <select name="energy">
+                <option value="High">High</option>
+                <option value="Focused">Focused</option>
+                <option value="Steady">Steady</option>
+              </select>
+            </label>
+            <button type="submit">Add session</button>
+          </form>
+          <div class="session-log">
+            <h3>Recent wins</h3>
+            <ul id="sessionList"></ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="cta">
+        <div>
+          <h2>Stay consistent, beat the curve.</h2>
+          <p>Use small daily wins to unlock big ranks.</p>
+        </div>
+        <button class="pill pill--bright" id="celebrateBtn">Celebrate progress</button>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
